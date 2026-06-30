@@ -19,6 +19,7 @@ exports.ContactsModule = ContactsModule = __decorate([
         imports: [prisma_module_1.PrismaModule],
         controllers: [contacts_controller_1.ContactsController],
         providers: [contacts_service_1.ContactsService],
+        exports: [contacts_service_1.ContactsService],
     })
 ], ContactsModule);
 //# sourceMappingURL=contacts.module.js.map

@@ -1,60 +1,71 @@
 import { UsersService } from './users.service';
+import { ContactsService } from '../contacts/contacts.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { CreateContactDto } from '../contacts/dto/create-contact.dto';
 export declare class UsersController {
     private readonly usersService;
-    constructor(usersService: UsersService);
+    private readonly contactsService;
+    constructor(usersService: UsersService, contactsService: ContactsService);
     findAll(): Promise<({
         contacts: {
-            id: number;
-            createdAt: Date;
-            updatedAt: Date;
             name: string;
             phone_number: string;
+            createdAt: Date;
+            updatedAt: Date;
+            id: number;
             userId: number;
         }[];
     } & {
-        id: number;
-        username: string;
-        email: string;
         createdAt: Date;
         updatedAt: Date;
+        id: number;
+        email: string;
+        username: string;
     })[]>;
     create(createUserDto: CreateUserDto): Promise<{
-        id: number;
-        username: string;
-        email: string;
         createdAt: Date;
         updatedAt: Date;
+        id: number;
+        email: string;
+        username: string;
     }>;
     findOne(id: number): Promise<{
         contacts: {
-            id: number;
-            createdAt: Date;
-            updatedAt: Date;
             name: string;
             phone_number: string;
+            createdAt: Date;
+            updatedAt: Date;
+            id: number;
             userId: number;
         }[];
     } & {
-        id: number;
-        username: string;
-        email: string;
         createdAt: Date;
         updatedAt: Date;
+        id: number;
+        email: string;
+        username: string;
     }>;
     update(id: number, updateUserDto: UpdateUserDto): Promise<{
-        id: number;
-        username: string;
-        email: string;
         createdAt: Date;
         updatedAt: Date;
+        id: number;
+        email: string;
+        username: string;
     }>;
     remove(id: number): Promise<{
-        id: number;
-        username: string;
-        email: string;
         createdAt: Date;
         updatedAt: Date;
+        id: number;
+        email: string;
+        username: string;
+    }>;
+    createContact(userId: number, createContactDto: CreateContactDto): Promise<{
+        name: string;
+        phone_number: string;
+        createdAt: Date;
+        updatedAt: Date;
+        id: number;
+        userId: number;
     }>;
 }

@@ -15,13 +15,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersController = void 0;
 const common_1 = require("@nestjs/common");
 const users_service_1 = require("./users.service");
+const contacts_service_1 = require("../contacts/contacts.service");
 const create_user_dto_1 = require("./dto/create-user.dto");
 const update_user_dto_1 = require("./dto/update-user.dto");
+const create_contact_dto_1 = require("../contacts/dto/create-contact.dto");
 const swagger_1 = require("@nestjs/swagger");
 let UsersController = class UsersController {
     usersService;
-    constructor(usersService) {
+    contactsService;
+    constructor(usersService, contactsService) {
         this.usersService = usersService;
+        this.contactsService = contactsService;
     }
     findAll() {
         return this.usersService.findAll();
@@ -37,6 +41,9 @@ let UsersController = class UsersController {
     }
     remove(id) {
         return this.usersService.remove(id);
+    }
+    createContact(userId, createContactDto) {
+        return this.contactsService.create(userId, createContactDto);
     }
 };
 exports.UsersController = UsersController;
@@ -97,9 +104,23 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "remove", null);
+__decorate([
+    (0, common_1.Post)(':userId/contacts'),
+    (0, swagger_1.ApiOperation)({ summary: 'Add a new contact to a user' }),
+    (0, swagger_1.ApiParam)({ name: 'userId', type: 'integer', required: true, description: 'Owner User ID' }),
+    (0, swagger_1.ApiBody)({ type: create_contact_dto_1.CreateContactDto, required: true }),
+    (0, swagger_1.ApiResponse)({ status: 201, description: 'Created' }),
+    (0, swagger_1.ApiResponse)({ status: 404, description: 'User not found' }),
+    __param(0, (0, common_1.Param)('userId', common_1.ParseIntPipe)),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number, create_contact_dto_1.CreateContactDto]),
+    __metadata("design:returntype", void 0)
+], UsersController.prototype, "createContact", null);
 exports.UsersController = UsersController = __decorate([
     (0, swagger_1.ApiTags)('Users'),
     (0, common_1.Controller)('users'),
-    __metadata("design:paramtypes", [users_service_1.UsersService])
+    __metadata("design:paramtypes", [users_service_1.UsersService,
+        contacts_service_1.ContactsService])
 ], UsersController);
 //# sourceMappingURL=users.controller.js.map

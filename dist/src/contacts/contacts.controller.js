@@ -15,16 +15,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ContactsController = void 0;
 const common_1 = require("@nestjs/common");
 const contacts_service_1 = require("./contacts.service");
-const create_contact_dto_1 = require("./dto/create-contact.dto");
 const update_contact_dto_1 = require("./dto/update-contact.dto");
 const swagger_1 = require("@nestjs/swagger");
 let ContactsController = class ContactsController {
     contactsService;
     constructor(contactsService) {
         this.contactsService = contactsService;
-    }
-    create(userId, createContactDto) {
-        return this.contactsService.create(userId, createContactDto);
     }
     update(id, updateContactDto) {
         return this.contactsService.update(id, updateContactDto);
@@ -34,20 +30,6 @@ let ContactsController = class ContactsController {
     }
 };
 exports.ContactsController = ContactsController;
-__decorate([
-    (0, swagger_1.ApiTags)('Users'),
-    (0, common_1.Post)('users/:userId/contacts'),
-    (0, swagger_1.ApiOperation)({ summary: 'Add a new contact to a user' }),
-    (0, swagger_1.ApiParam)({ name: 'userId', type: 'integer', required: true, description: 'Owner User ID' }),
-    (0, swagger_1.ApiBody)({ type: create_contact_dto_1.CreateContactDto, required: true }),
-    (0, swagger_1.ApiResponse)({ status: 201, description: 'Created' }),
-    (0, swagger_1.ApiResponse)({ status: 404, description: 'User not found' }),
-    __param(0, (0, common_1.Param)('userId', common_1.ParseIntPipe)),
-    __param(1, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, create_contact_dto_1.CreateContactDto]),
-    __metadata("design:returntype", void 0)
-], ContactsController.prototype, "create", null);
 __decorate([
     (0, common_1.Put)('contacts/:id'),
     (0, swagger_1.ApiOperation)({ summary: 'Update contact details' }),

@@ -20,7 +20,7 @@ let UsersService = class UsersService {
     async create(data) {
         const existingUser = await this.prisma.user.findUnique({ where: { email: data.email } });
         if (existingUser)
-            throw new common_1.ConflictException('Email sudah terdaftar');
+            throw new common_1.ConflictException('Email already registered');
         return this.prisma.user.create({ data });
     }
     async findAll() {
@@ -32,7 +32,7 @@ let UsersService = class UsersService {
             include: { contacts: true },
         });
         if (!user)
-            throw new common_1.NotFoundException('User tidak ditemukan');
+            throw new common_1.NotFoundException('User not found');
         return user;
     }
     async update(id, data) {

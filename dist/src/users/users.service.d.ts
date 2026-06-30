@@ -1,10 +1,9 @@
 import { PrismaService } from '../prisma/prisma.service';
-import { Prisma } from '@prisma/client';
-import { IUpdateUser } from './interfaces/user.interface';
+import { ICreateUser, IUpdateUser } from './interfaces/user.interface';
 export declare class UsersService {
     private prisma;
     constructor(prisma: PrismaService);
-    create(data: Prisma.UserCreateInput): Promise<{
+    create(data: ICreateUser): Promise<{
         username: string;
         email: string;
         createdAt: Date;

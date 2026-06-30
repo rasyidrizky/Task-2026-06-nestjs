@@ -7,9 +7,9 @@ import { ICreateUser, IUpdateUser } from './interfaces/user.interface';
 export class UsersService {
   constructor(private prisma: PrismaService) { }
 
-  async create(data: Prisma.UserCreateInput) {
+  async create(data: ICreateUser) {
     const existingUser = await this.prisma.user.findUnique({ where: { email: data.email } });
-    if (existingUser) throw new ConflictException('Email sudah terdaftar');
+    if (existingUser) throw new ConflictException('Email already registered');
     return this.prisma.user.create({ data });
   }
 
@@ -22,7 +22,7 @@ export class UsersService {
       where: { id },
       include: { contacts: true },
     });
-    if (!user) throw new NotFoundException('User tidak ditemukan');
+    if (!user) throw new NotFoundException('User not found');
     return user;
   }
 

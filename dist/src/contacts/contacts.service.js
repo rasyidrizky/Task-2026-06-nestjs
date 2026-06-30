@@ -20,7 +20,7 @@ let ContactsService = class ContactsService {
     async create(userId, data) {
         const user = await this.prisma.user.findUnique({ where: { id: userId } });
         if (!user)
-            throw new common_1.NotFoundException('User tidak ditemukan');
+            throw new common_1.NotFoundException('User not found');
         return this.prisma.contact.create({
             data: { ...data, userId },
         });
@@ -37,7 +37,7 @@ let ContactsService = class ContactsService {
     async remove(id) {
         const contact = await this.prisma.contact.findUnique({ where: { id } });
         if (!contact)
-            throw new common_1.NotFoundException('Kontak tidak ditemukan');
+            throw new common_1.NotFoundException('Contact not found');
         return this.prisma.contact.delete({ where: { id } });
     }
 };

@@ -1,13 +1,18 @@
 import { Controller, Get, Post, Body, Param, Delete, Put, ParseIntPipe } from '@nestjs/common';
 import { UsersService } from './users.service';
+import { ContactsService } from '../contacts/contacts.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { CreateContactDto } from '../contacts/dto/create-contact.dto';
 import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiBody } from '@nestjs/swagger';
 
 @ApiTags('Users')
 @Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(
+    private readonly usersService: UsersService,
+    private readonly contactsService: ContactsService,
+  ) {}
 
   @Get()
   @ApiOperation({ summary: 'Return all users' })
@@ -54,5 +59,18 @@ export class UsersController {
   @ApiResponse({ status: 404, description: 'User not found' })
   remove(@Param('id', ParseIntPipe) id: number) {
     return this.usersService.remove(id);
+  }
+
+  @Post(':userId/contacts')
+  @ApiOperation({ summary: 'Add a new contact to a user' })
+  @ApiParam({ name: 'userId', type: 'integer', required: true, description: 'Owner User ID' })
+  @ApiBody({ type: CreateContactDto, required: true })
+  @ApiResponse({ status: 201, description: 'Created' })
+  @ApiResponse({ status: 404, description: 'User not found' })
+  createContact(
+    @Param('userId', ParseIntPipe) userId: number,
+    @Body() createContactDto: CreateContactDto,
+  ) {
+    return this.contactsService.create(userId, createContactDto);
   }
 }

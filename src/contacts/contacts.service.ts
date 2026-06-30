@@ -7,9 +7,9 @@ import { ICreateContact, IUpdateContact } from './interfaces/contact.interface';
 export class ContactsService {
   constructor(private prisma: PrismaService) { }
 
-  async create(userId: number, data: Omit<Prisma.ContactCreateInput, 'user'>) {
+  async create(userId: number, data: ICreateContact) {
     const user = await this.prisma.user.findUnique({ where: { id: userId } });
-    if (!user) throw new NotFoundException('User tidak ditemukan');
+    if (!user) throw new NotFoundException('User not found');
 
     return this.prisma.contact.create({
       data: { ...data, userId },
@@ -27,7 +27,7 @@ export class ContactsService {
 
   async remove(id: number) {
     const contact = await this.prisma.contact.findUnique({ where: { id } });
-    if (!contact) throw new NotFoundException('Kontak tidak ditemukan');
+    if (!contact) throw new NotFoundException('Contact not found');
     return this.prisma.contact.delete({ where: { id } });
   }
 }
