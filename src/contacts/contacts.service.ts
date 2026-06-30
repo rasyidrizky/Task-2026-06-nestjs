@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { Prisma } from '@prisma/client';
+import { ICreateContact, IUpdateContact } from './interfaces/contact.interface';
 
 @Injectable()
 export class ContactsService {
@@ -12,6 +13,15 @@ export class ContactsService {
 
     return this.prisma.contact.create({
       data: { ...data, userId },
+    });
+  }
+
+  async update(id: number, data: IUpdateContact) {
+    const contact = await this.prisma.contact.findUnique({ where: { id } });
+    if (!contact) throw new NotFoundException('Contact not found');
+    return this.prisma.contact.update({
+      where: { id },
+      data,
     });
   }
 

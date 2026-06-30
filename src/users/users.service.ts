@@ -1,6 +1,7 @@
 import { Injectable, ConflictException, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { Prisma } from '@prisma/client'; // Mengambil tipe dari Prisma
+import { Prisma } from '@prisma/client';
+import { ICreateUser, IUpdateUser } from './interfaces/user.interface';
 
 @Injectable()
 export class UsersService {
@@ -23,6 +24,14 @@ export class UsersService {
     });
     if (!user) throw new NotFoundException('User tidak ditemukan');
     return user;
+  }
+
+  async update(id: number, data: IUpdateUser) {
+    await this.findOne(id);
+    return this.prisma.user.update({
+      where: { id },
+      data,
+    });
   }
 
   async remove(id: number) {

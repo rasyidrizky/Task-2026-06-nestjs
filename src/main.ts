@@ -15,14 +15,14 @@ async function bootstrap() {
   );
 
   const config = new DocumentBuilder()
-    .setTitle('Personal Contact Book API')
-    .setDescription('NestJS + Prisma (Based on Anson Tutorial)')
-    .setVersion('1.0')
+    .setTitle('Task API')
+    .setDescription('REST API documentation')
+    .setVersion('1.0.0')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api-docs', app, document);
 
-  await app.listen(process.env.PORT ?? 3000);
+  await app.listen(process.env.PORT ?? 5000);
 }
 bootstrap();

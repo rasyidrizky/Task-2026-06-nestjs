@@ -1,5 +1,6 @@
 import { PrismaService } from '../prisma/prisma.service';
 import { Prisma } from '@prisma/client';
+import { IUpdateUser } from './interfaces/user.interface';
 export declare class UsersService {
     private prisma;
     constructor(prisma: PrismaService);
@@ -36,6 +37,13 @@ export declare class UsersService {
             userId: number;
         }[];
     } & {
+        username: string;
+        email: string;
+        createdAt: Date;
+        updatedAt: Date;
+        id: number;
+    }>;
+    update(id: number, data: IUpdateUser): Promise<{
         username: string;
         email: string;
         createdAt: Date;

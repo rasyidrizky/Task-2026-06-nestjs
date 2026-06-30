@@ -35,6 +35,13 @@ let UsersService = class UsersService {
             throw new common_1.NotFoundException('User tidak ditemukan');
         return user;
     }
+    async update(id, data) {
+        await this.findOne(id);
+        return this.prisma.user.update({
+            where: { id },
+            data,
+        });
+    }
     async remove(id) {
         await this.findOne(id);
         return this.prisma.user.delete({ where: { id } });

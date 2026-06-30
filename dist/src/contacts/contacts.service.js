@@ -25,6 +25,15 @@ let ContactsService = class ContactsService {
             data: { ...data, userId },
         });
     }
+    async update(id, data) {
+        const contact = await this.prisma.contact.findUnique({ where: { id } });
+        if (!contact)
+            throw new common_1.NotFoundException('Contact not found');
+        return this.prisma.contact.update({
+            where: { id },
+            data,
+        });
+    }
     async remove(id) {
         const contact = await this.prisma.contact.findUnique({ where: { id } });
         if (!contact)
