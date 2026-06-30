@@ -18,15 +18,15 @@ class CreateContactDto {
 }
 exports.CreateContactDto = CreateContactDto;
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: 'Budi' }),
+    (0, swagger_1.ApiProperty)({ example: 'string' }),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateContactDto.prototype, "name", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: '081234567890' }),
+    (0, swagger_1.ApiProperty)({ example: 'string' }),
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.Matches)(/^08\d{8,12}$/, { message: 'Harus diawali 08 dan 10-14 digit' }),
+    (0, class_validator_1.Matches)(/^08\d{8,12}$/, { message: 'Phone number must start with 08 and be 10–14 digits long' }),
     __metadata("design:type", String)
 ], CreateContactDto.prototype, "phone_number", void 0);
 //# sourceMappingURL=create-contact.dto.js.map

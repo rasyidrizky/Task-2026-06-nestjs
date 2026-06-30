@@ -6,17 +6,17 @@ export declare class ContactsController {
     update(id: number, updateContactDto: UpdateContactDto): Promise<{
         name: string;
         phone_number: string;
+        id: number;
         createdAt: Date;
         updatedAt: Date;
-        id: number;
         userId: number;
     }>;
     remove(id: number): Promise<{
         name: string;
         phone_number: string;
+        id: number;
         createdAt: Date;
         updatedAt: Date;
-        id: number;
         userId: number;
     }>;
 }

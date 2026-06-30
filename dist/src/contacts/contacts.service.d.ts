@@ -4,27 +4,27 @@ export declare class ContactsService {
     private prisma;
     constructor(prisma: PrismaService);
     create(userId: number, data: ICreateContact): Promise<{
-        name: string;
-        phone_number: string;
+        id: number;
         createdAt: Date;
         updatedAt: Date;
-        id: number;
+        name: string;
+        phone_number: string;
         userId: number;
     }>;
     update(id: number, data: IUpdateContact): Promise<{
-        name: string;
-        phone_number: string;
+        id: number;
         createdAt: Date;
         updatedAt: Date;
-        id: number;
+        name: string;
+        phone_number: string;
         userId: number;
     }>;
     remove(id: number): Promise<{
-        name: string;
-        phone_number: string;
+        id: number;
         createdAt: Date;
         updatedAt: Date;
-        id: number;
+        name: string;
+        phone_number: string;
         userId: number;
     }>;
 }

@@ -4,56 +4,56 @@ export declare class UsersService {
     private prisma;
     constructor(prisma: PrismaService);
     create(data: ICreateUser): Promise<{
-        username: string;
+        id: number;
         email: string;
+        username: string;
         createdAt: Date;
         updatedAt: Date;
-        id: number;
     }>;
     findAll(): Promise<({
         contacts: {
+            id: number;
             createdAt: Date;
             updatedAt: Date;
-            id: number;
             name: string;
             phone_number: string;
             userId: number;
         }[];
     } & {
-        username: string;
+        id: number;
         email: string;
+        username: string;
         createdAt: Date;
         updatedAt: Date;
-        id: number;
     })[]>;
     findOne(id: number): Promise<{
         contacts: {
+            id: number;
             createdAt: Date;
             updatedAt: Date;
-            id: number;
             name: string;
             phone_number: string;
             userId: number;
         }[];
     } & {
-        username: string;
+        id: number;
         email: string;
+        username: string;
         createdAt: Date;
         updatedAt: Date;
-        id: number;
     }>;
     update(id: number, data: IUpdateUser): Promise<{
-        username: string;
+        id: number;
         email: string;
+        username: string;
         createdAt: Date;
         updatedAt: Date;
-        id: number;
     }>;
     remove(id: number): Promise<{
-        username: string;
+        id: number;
         email: string;
+        username: string;
         createdAt: Date;
         updatedAt: Date;
-        id: number;
     }>;
 }

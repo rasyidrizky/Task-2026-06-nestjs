@@ -11,61 +11,61 @@ export declare class UsersController {
         contacts: {
             name: string;
             phone_number: string;
+            id: number;
             createdAt: Date;
             updatedAt: Date;
-            id: number;
             userId: number;
         }[];
     } & {
+        id: number;
+        username: string;
+        email: string;
         createdAt: Date;
         updatedAt: Date;
-        id: number;
-        email: string;
-        username: string;
     })[]>;
     create(createUserDto: CreateUserDto): Promise<{
+        id: number;
+        username: string;
+        email: string;
         createdAt: Date;
         updatedAt: Date;
-        id: number;
-        email: string;
-        username: string;
     }>;
     findOne(id: number): Promise<{
         contacts: {
             name: string;
             phone_number: string;
+            id: number;
             createdAt: Date;
             updatedAt: Date;
-            id: number;
             userId: number;
         }[];
     } & {
+        id: number;
+        username: string;
+        email: string;
         createdAt: Date;
         updatedAt: Date;
-        id: number;
-        email: string;
-        username: string;
     }>;
     update(id: number, updateUserDto: UpdateUserDto): Promise<{
+        id: number;
+        username: string;
+        email: string;
         createdAt: Date;
         updatedAt: Date;
-        id: number;
-        email: string;
-        username: string;
     }>;
     remove(id: number): Promise<{
+        id: number;
+        username: string;
+        email: string;
         createdAt: Date;
         updatedAt: Date;
-        id: number;
-        email: string;
-        username: string;
     }>;
     createContact(userId: number, createContactDto: CreateContactDto): Promise<{
         name: string;
         phone_number: string;
+        id: number;
         createdAt: Date;
         updatedAt: Date;
-        id: number;
         userId: number;
     }>;
 }

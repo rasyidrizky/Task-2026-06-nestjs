@@ -2,13 +2,13 @@ import { IsNotEmpty, IsOptional, IsString, Matches } from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class CreateContactDto {
-  @ApiProperty({ example: 'Budi' })
+  @ApiProperty({ example: 'string' })
   @IsString()
   @IsNotEmpty()
   name!: string;
 
-  @ApiProperty({ example: '081234567890' })
+  @ApiProperty({ example: 'string' })
   @IsString()
-  @Matches(/^08\d{8,12}$/, { message: 'Harus diawali 08 dan 10-14 digit' })
+  @Matches(/^08\d{8,12}$/, { message: 'Phone number must start with 08 and be 10–14 digits long' })
   phone_number!: string;
 }
