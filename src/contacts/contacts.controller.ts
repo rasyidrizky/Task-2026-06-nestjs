@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Param, Delete, Put, ParseIntPipe } from '@nestjs/common';
+import { Controller, Body, Param, Delete, Put, ParseIntPipe } from '@nestjs/common';
 import { ContactsService } from './contacts.service';
 import { UpdateContactDto } from './dto/update-contact.dto';
 import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiBody } from '@nestjs/swagger';

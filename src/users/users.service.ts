@@ -1,6 +1,5 @@
 import { Injectable, ConflictException, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { Prisma } from '@prisma/client';
 import { ICreateUser, IUpdateUser } from './interfaces/user.interface';
 
 @Injectable()

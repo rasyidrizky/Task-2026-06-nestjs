@@ -1,5 +1,5 @@
-import { IsNotEmpty, IsOptional, IsString, Matches } from 'class-validator';
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { IsNotEmpty, IsString, Matches } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateContactDto {
   @ApiProperty({ example: 'string' })
