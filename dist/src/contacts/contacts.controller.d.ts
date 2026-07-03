@@ -4,19 +4,19 @@ export declare class ContactsController {
     private readonly contactsService;
     constructor(contactsService: ContactsService);
     update(id: number, updateContactDto: UpdateContactDto): Promise<{
-        id: number;
-        createdAt: Date;
-        updatedAt: Date;
         name: string;
+        id: number;
         phone_number: string;
         userId: number;
+        createdAt: Date;
+        updatedAt: Date;
     }>;
     remove(id: number): Promise<{
-        id: number;
-        createdAt: Date;
-        updatedAt: Date;
         name: string;
+        id: number;
         phone_number: string;
         userId: number;
+        createdAt: Date;
+        updatedAt: Date;
     }>;
 }
