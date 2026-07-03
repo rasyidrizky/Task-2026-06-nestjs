@@ -9,45 +9,45 @@ export declare class UsersController {
     constructor(usersService: UsersService, contactsService: ContactsService);
     findAll(): Promise<{
         id: number;
+        username: string;
+        email: string;
         createdAt: Date;
         updatedAt: Date;
-        email: string;
-        username: string;
     }[]>;
     create(createUserDto: CreateUserDto): Promise<{
         id: number;
+        username: string;
+        email: string;
         createdAt: Date;
         updatedAt: Date;
-        email: string;
-        username: string;
     }>;
     findOne(id: number): Promise<{
         id: number;
+        username: string;
+        email: string;
         createdAt: Date;
         updatedAt: Date;
-        email: string;
-        username: string;
     }>;
     update(id: number, updateUserDto: UpdateUserDto): Promise<{
         id: number;
+        username: string;
+        email: string;
         createdAt: Date;
         updatedAt: Date;
-        email: string;
-        username: string;
     }>;
     remove(id: number): Promise<{
         id: number;
+        username: string;
+        email: string;
         createdAt: Date;
         updatedAt: Date;
-        email: string;
-        username: string;
     }>;
     createContact(userId: number, createContactDto: CreateContactDto): Promise<{
         name: string;
         id: number;
-        phone_number: string;
-        userId: number;
         createdAt: Date;
         updatedAt: Date;
+        phone_number: string;
+        userId: number;
     }>;
 }
